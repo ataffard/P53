@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="description" content="Document created automatically on Wed May  2 08:37:02 2012 by david@dk.local using ./build.py">
+  <title> Conditional Expressions </title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <style type="text/css">
+  body {
+	background-color: #CFF;
+}
+  </style>
+</head>
+<body>
+  <h1 id="title"> Conditional Expressions </h1>
+  <div id="content">
+    <div class="note">Relational expressions evaluate to either true (1) or false (0). <br />
+      Be especially careful
+not to use a single equals (=), which is used for assigning a value to a variable,
+when you really want to test equality (==). </div>
+    <pre>x &gt; 0 x &lt; 0 x &gt;= 0 x &lt;= 0 x == 0 x != 0     </pre>
+    <div class="note">Relational operators cannot be chained together, so you cannot write -1 &lt; x &lt; +1.
+Instead, use the logical operators described below.
+<br /><br />Logical operators combine true/false values where anything equal to zero is considered
+false and any other numerical value is considered true.
+</div>
+    <pre>(...) &amp;&amp; (...) /* true if both sides are true */ 
+(...) || (...) /* true if at least one side is true */     </pre>
+    <div class="note">You can chain together multiple logical operators into a single expression. <br />
+      If you mix
+&amp;&amp; and ||, remember that &amp;&amp; has higher precedence (&amp;&amp; and || are analogous to * and +)
+</div>
+    <pre>(...) &amp;&amp; (...) &amp;&amp; (...) 
+((...) || (...)) &amp;&amp; (...)      </pre>
+    <div class="note">The sub-expressions within a conditional expression are evaluated in a predictable and
+well defined order (generally left to right). <br />
+This is important in case any expressions
+have side effects (for example, you might call a function that updates a log file). <br />
+In case
+the final result can be deduced without evaluating all sub-expressions, the remaining
+sub-expressions are guaranteed not to be evaluated. <br />
+This is called "short-circuit evaluation"
+and allows you to write code such as the following.
+</div>
+
+    <pre>if(x &gt;= 0 &amp;&amp; sqrt(x) &lt; 1) { /* sqrt(x) will never be called with x &lt; 0 */ }   </pre>
+  </div>
+  <div id="footer">[<a href="main.html">HOME</a> | <a href="index.html">INDEX</a>]</div>
+</body>
+
+</html>
