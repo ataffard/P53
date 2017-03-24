@@ -1,0 +1,5 @@
+./compileC.sh helloWorld
+gcc -Wall -Wextra -pedantic -std=c99 -o helloWorld helloWorld.c
+
+./helloWorld 
+Hello, World! 

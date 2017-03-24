@@ -1,0 +1,17 @@
+###############################################################
+# This macro demonstrate some GNUplot basics
+#
+# Author: A. Taffard
+###############################################################
+
+#plot 'gnuplot_test2.dat' with linespoints
+
+set key top left
+plot 'gnuplot_test2.dat' index 0 with linespoints title "x^2",\
+     'gnuplot_test2.dat' index 1 with linespoints title "x^3"
+
+
+#plot '< head -31 gnuplot_test2.dat' with linespoints title "x^2",\
+#     '< tail -20 gnuplot_test2.dat' with linespoints title "x^3"
+
+

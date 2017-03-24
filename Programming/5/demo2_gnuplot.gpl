@@ -1,0 +1,41 @@
+###############################################################
+# This macro demonstrate some GNUplot basics
+#
+# Author: A. Taffard
+###############################################################
+
+
+f(x) = sin(x)    # define function 
+plot f(x)        # plot
+replot f(2*x)    # plot another function on top
+
+set samples 200  # sample rate - smooth curve
+
+plot f(x) with dots # using dots
+set samples 50000  # sample rate - smooth curve
+replot 
+
+set ytics 0.5    # y-axis label distance
+#set mytics 0.05     # number of small/minor ticks marks on y-axis
+replot           # replot
+
+set xrange [-pi:pi] # Set x-axis range
+set xtics ("-pi" -pi, "-pi/2" -pi/2, 0, "pi/2" pi/2, "pi" pi) # custom lables
+
+
+set size ratio 1  # set aspect ratio 1:1 between the axes
+set size ratio -1  # set scale so the the unit has the same length on both x,y axes
+
+
+set zeroaxis       # set axis via 0,0
+replot
+
+#Save your plot as PNG
+set terminal png
+set output "./Plots/demo2.png"
+replot
+
+#Save your plot as Postscript
+set terminal postscript
+set output "./Plots/demo2.eps"
+replot

@@ -1,0 +1,29 @@
+###############################################################
+# This macro demonstrate some GNUplot basics
+#
+# Author: A. Taffard
+###############################################################
+
+f(x) = x*x*x 
+g(x) = x
+h(x) = x*x
+k(x) = x*x*x*x
+
+set multiplot
+set size 0.5, 0.5   
+
+set origin 0,0
+plot f(x) title "x^3"
+
+set origin 0,0.5
+plot g(x) title "x"
+
+set origin 0.5,0.5
+plot h(x) title "x^2"
+
+set origin 0.5,0
+plot k(x) title "x^4"
+
+unset multiplot
+
+

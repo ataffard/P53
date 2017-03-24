@@ -1,0 +1,13 @@
+./ieee 
+big = inf
+negbig = -inf
+bigsum = nan
+nan1 = nan
+nan2 = nan
+nan3 = nan
+nan1 == nan2 ? 0
+nan1 == nan3 ? 0
+nan2 == nan3 ? 0
+x:33554431
+y:33554432.000000
+

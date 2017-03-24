@@ -1,0 +1,9 @@
+ ./dotProduct 
+Enter the first vector (x,y,z,): 2
+3
+4
+Enter the second vector (x,y,z) : 1
+3
+6
+The dot product is 35.000000
+The cross product (x,y,z) is (6.000000,-8.000000,3.000000)

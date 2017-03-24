@@ -1,0 +1,4 @@
+gcc -Wall -Wextra -pedantic -std=c99 -o math math.c
+./math 
+The length of side 3 is 2.769932
+

@@ -1,0 +1,10 @@
+./loop_control 
+What do you want to do? [0=normal,1=continue,2=break] 0
+got input 0
+index = 0
+What do you want to do? [0=normal,1=continue,2=break] 1
+got input 1
+What do you want to do? [0=normal,1=continue,2=break] 2
+got input 2
+bye.
+
