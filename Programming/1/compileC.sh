@@ -1,4 +1,3 @@
-[code language="bash", collapse=true, title=compileC.sh]
 #!/bin/bash
 
 if [[ $# = 1 ]]; then
@@ -14,6 +13,4 @@ exec=(`ls -1 ${code} |cut -d"." -f1-1`)
 #compile
 echo "gcc -Wall -Wextra -pedantic -std=c99 ${code} -lm -o ${exec}" 
 gcc -Wall -Wextra -pedantic -std=c99 ${code} -lm -o ${exec} 
-
-[/code]
 
