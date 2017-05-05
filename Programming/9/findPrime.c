@@ -95,10 +95,13 @@ int isPrime(long unsigned int n)
   // Find if the number is not a prime using trial division 
   // http://en.wikipedia.org/wiki/Prime_number
   // http://en.wikipedia.org/wiki/Primality_test
-  if( n==1 || (n!=2 && n%2==0) ){
+  //  - 1 not a prime.
+  //  - Eliminate any even number >2, since n can also be divided by 2
+  if( n==1 || (n!=2 && n%2==0) ){ 
     return 0; 
   }
   else{
+    //Only need to test divisor <= sqrt(n)
     long unsigned int sqrt_n = (long unsigned int) sqrt(n);
     for(long unsigned int i=3; i<= sqrt_n; i+=2 ){
       if( n%i==0 ) return 0;

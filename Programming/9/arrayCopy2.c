@@ -1,17 +1,21 @@
-#include <stdio.h>
-#include <string.h>
-
 /*
   Description: 2D array copy using memcpy
-
+  
   Author: Anyes Taffard
 */
+#include <stdio.h>
+#include <string.h>
+#include <time.h>
 
+#define NROW 5
+#define NCOL 5
 
-void printArray(int nRow, int nColumn, int array[][nColumn]){
+//________________________________________
+void printArray(int nRow, int nColumn, double array[][nColumn])
+{
   for(int iRow=0; iRow<nRow; iRow++){
     for(int iCol=0; iCol<nColumn; iCol++){
-      printf("%i \t",array[iRow][iCol]);
+      printf("%lf \t",array[iRow][iCol]);
     }
     printf("\n");
   }
@@ -21,15 +25,20 @@ void printArray(int nRow, int nColumn, int array[][nColumn]){
 //________________________________________
 //________________________________________
 int main() {
-
-  int table[3][5] = { { 5, 4, 6,  0, 6 },
-		      { 2, 1, 4,  6, 3 },
-		      { 5, 7, 4, 21, 0 } };
-
-  int tableCopy[3][5];
-
+  double table[NROW][NCOL] = { { 5.5, 4.6, 6.2,  0.3, 6.7 },
+			       { 2.8, 1.43, 4.2,  6.8, 3.6 },
+			       { 5.3, 7.9, 4.3, 21.2, 0.34 },
+			       { 4.1, 8.5, 10.1, 15.8, 30.3 },
+			       { 51.5, 17.6, 5.2, 1.8, 20.4 } };
+  double tableCopy[NROW][NCOL];
+  
+  clock_t t = clock(); //Grab time
   memcpy(tableCopy, table, sizeof(tableCopy));
-  printArray(3,5,tableCopy);
-
+  t = clock() - t; //get time difference
+   
+  printArray(NROW,NCOL,tableCopy);
+  float sec = ((float) t)/CLOCKS_PER_SEC;
+  printf("Execution times %d clicks (%f seconds) \n",(int) t, sec);
+  
   return 0;
 }
