@@ -28,7 +28,8 @@ const int N = 2;      //dimension of the system of ODE
 void ODE(double t, double vec[], double fvec[])
 {
   fvec[0] = vec[1];
-  fvec[1] = (-1.0) * (b/m * vec[1] +  k/m * vec[0]); 
+  fvec[1] = (-1.0) * (b/m * vec[1] +  k/m * vec[0]); //With damping
+  //fvec[1] = (-1.0) * k/m * vec[0];  //No damping
 }
 //_________________________________________
 /*
@@ -69,22 +70,22 @@ void rk4(double t, double h, int N, double vec[])
   double dydt1[N], dydt2[N], dydt3[N], dydt4[N]; //Evaluation of the ODE's
   double vec2[N], vec3[N], vec4[N];              //input value for ODE's evaluation
 
-  //Estimate k1
+  //Estimate K1
   ODE(t, vec, dydt1);
 
-  //Estimate k2
+  //Estimate K2
   addVectors(N, 1., vec, h/2.0, dydt1, vec2); //get new input points
   ODE(t+h/2.0, vec2,dydt2);
  
-  //Estimate k3
+  //Estimate K3
   addVectors(N, 1., vec, h/2.0, dydt2, vec3); //get new input points
   ODE(t+h/2.0, vec3, dydt3);
 
-  //Estimate k4
+  //Estimate K4
   addVectors(N, 1., vec, h, dydt3, vec4);     //get new input points
   ODE(t+h, vec4, dydt4);
 
-  //Assemble the new points
+  //Assemble the new points and update vec
   addVectors(N, 1, vec, h/6, dydt1, vec);
   addVectors(N, 1, vec, h/3, dydt2, vec);
   addVectors(N, 1, vec, h/3, dydt3, vec);

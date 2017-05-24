@@ -25,7 +25,7 @@ double f1(double t, double x, double v)
 // dv/dt = -x  (1st order derivative)
 double f2(double t, double x, double v)
 {
-  //  double d2x = (-1.0) * k/m * x;  //No damping
+  //double d2x = (-1.0) * k/m * x;  //No damping
   double d2x = (-1.0) * ( b/m * v + k/m * x); //With damping
   return d2x;
 }
@@ -95,20 +95,20 @@ void rk4(double ti, double xi, double vi,
   double h = tf - ti;
   double t = ti;
 
-  k1x = h*f1(t, xi, vi);
-  k1v = h*f2(t, xi, vi);
+  k1x = f1(t, xi, vi);
+  k1v = f2(t, xi, vi);
 
-  k2x = h*f1(t+h/2.0, xi+k1x/2.0, vi+k1v/2.0);
-  k2v = h*f2(t+h/2.0, xi+k1x/2.0, vi+k1v/2.0);
+  k2x = f1(t+h/2.0, xi+k1x*h/2.0, vi+k1v*h/2.0);
+  k2v = f2(t+h/2.0, xi+k1x*h/2.0, vi+k1v*h/2.0);
 
-  k3x = h*f1(t+h/2.0, xi+k2x/2.0, vi+k2v/2.0);
-  k3v = h*f2(t+h/2.0, xi+k2x/2.0, vi+k2v/2.0);
+  k3x = f1(t+h/2.0, xi+k2x*h/2.0, vi+k2v*h/2.0);
+  k3v = f2(t+h/2.0, xi+k2x*h/2.0, vi+k2v*h/2.0);
 
-  k4x = h*f1(t+h, xi+k3x, vi+k3v);
-  k4v = h*f2(t+h, xi+k3x, vi+k3v);
+  k4x = f1(t+h, xi+k3x*h, vi+k3v*h);
+  k4v = f2(t+h, xi+k3x*h, vi+k3v*h);
 
-  *xf = xi + (k1x + 2.0*(k2x+k3x) + k4x)/6.0;
-  *vf = vi + (k1v + 2.0*(k2v+k3v) + k4v)/6.0;
+  *xf = xi + (k1x + 2.0*(k2x+k3x) + k4x)* h/6.0;
+  *vf = vi + (k1v + 2.0*(k2v+k3v) + k4v)* h/6.0;
 
 }
 
@@ -132,8 +132,8 @@ int main(){
   while(ti<tmax){
     tf += dt; //increment independent var
 
-    //rk2(ti, xi, vi, tf, &xf, &vf);
-    rk4(ti, xi, vi, tf, &xf, &vf);
+    rk2(ti, xi, vi, tf, &xf, &vf);
+    //rk4(ti, xi, vi, tf, &xf, &vf);
 
     printf("%lf %lf %lf %lf\n",tf,xf,vf,E(m,k,xf,vf));
     ti=tf;  //update for next step
